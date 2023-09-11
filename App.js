@@ -52,6 +52,12 @@ export default function App() {
         calculator()
         return
       case '+/-':
+        if(currentNumber !== "" || lastNumber !== ""){
+          if(currentNumber !==  "" && lastNumber === "") {
+            setCurrentNumber(parseFloat((currentNumber * -1).toString()));
+          }else
+          setCurrentNumber(parseFloat((lastNumber * -1).toString()));
+        }
         return
     }
 
