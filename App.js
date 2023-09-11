@@ -30,12 +30,15 @@ export default function App() {
       case '/': 
         setCurrentNumber((fistNumber / lastNumber).toString())
         return
+      case '%': 
+        setCurrentNumber((fistNumber / 100 * lastNumber).toString());
+        return
     }
   }
 
   function handleInput(buttonPressed){
     console.log(buttonPressed) // Mostra no Console a tecla pressionada
-    if(buttonPressed === '+' | buttonPressed === "-" | buttonPressed === "x" | buttonPressed === "/" ){
+    if(buttonPressed === '+' | buttonPressed === "-" | buttonPressed === "x" | buttonPressed === "/" | buttonPressed === "%" ){
       setCurrentNumber(currentNumber + " " + buttonPressed + " ")
       return
     }
@@ -52,6 +55,12 @@ export default function App() {
         calculator()
         return
       case '+/-':
+        if(currentNumber !== "" || lastNumber !== ""){
+          if(currentNumber !==  "" && lastNumber === "") {
+            setCurrentNumber(parseFloat((currentNumber * -1).toString()));
+          }else
+          setCurrentNumber(parseFloat((lastNumber * -1).toString()));
+        }
         return
     }
 
